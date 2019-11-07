@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.1.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -27,6 +27,14 @@ dependencies:
   flutter_driver:
     sdk: flutter
   fish_redux: ^0.2.8
+  # SP
+  shared_preferences: ^0.5.4
+  # toast
+  fluttertoast: ^3.1.3
+  # 页面路由
+  fluro: ^1.5.1
+  # 闪屏
+  shimmer: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -74,3 +82,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/images/

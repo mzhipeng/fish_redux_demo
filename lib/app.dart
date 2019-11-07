@@ -6,6 +6,12 @@ import 'global_store/store.dart';
 import 'todo_edit_page/page.dart';
 import 'todo_list_page/page.dart';
 
+/// login
+import 'demo_login/page.dart';
+
+/// home
+import 'demo_home/page.dart';
+
 /// 创建应用的根 Widget
 /// 1. 创建一个简单的路由，并注册页面
 /// 2. 对所需的页面进行和 AppStore 的连接
@@ -18,6 +24,8 @@ Widget createApp() {
 
       /// 注册Todo编辑页面
       'todo_edit': TodoEditPage(),
+      '$LoginPage': LoginPage(),
+      '$HomePage': HomePage(),
     },
     visitor: (String path, Page<Object, dynamic> page) {
       /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系
@@ -74,7 +82,7 @@ Widget createApp() {
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
-    home: routes.buildPage('todo_list', null),
+    home: routes.buildPage('$LoginPage', null),
     onGenerateRoute: (RouteSettings settings) {
       return MaterialPageRoute<Object>(builder: (BuildContext context) {
         return routes.buildPage(settings.name, settings.arguments);

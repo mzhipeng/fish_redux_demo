@@ -9,6 +9,8 @@ import 'state.dart';
 import 'view.dart';
 
 class TodoListPage extends Page<TodoListState, Map<String, dynamic>> {
+  static const String KEY = 'TodoListPage';
+
   TodoListPage()
       : super(
           initState: initState,
@@ -16,8 +18,9 @@ class TodoListPage extends Page<TodoListState, Map<String, dynamic>> {
           reducer: buildReducer(),
           view: buildView,
           dependencies: Dependencies<TodoListState>(
-              adapter: NoneConn<TodoListState>() + TodoListAdapterAdapter(),
-              slots: <String, Dependent<TodoListState>>{}),
+            adapter: NoneConn<TodoListState>() + TodoListAdapter(),
+//            slots: <String, Dependent<TodoListState>>{},
+          ),
 //          middleware: <Middleware<TodoListState>>[],
         );
 }

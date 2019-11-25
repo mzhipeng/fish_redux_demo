@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 
+import 'demo_todo/todo_list/page.dart';
 import 'global_store/state.dart';
 import 'global_store/store.dart';
 import 'todo_edit_page/page.dart';
@@ -26,6 +27,7 @@ Widget createApp() {
       'todo_edit': TodoEditPage(),
       '$LoginPage': LoginPage(),
       '$HomePage': HomePage(),
+      TodoListPage.KEY: TodoListPage(),
     },
     visitor: (String path, Page<Object, dynamic> page) {
       /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系
@@ -59,9 +61,7 @@ Widget createApp() {
         ],
 
         /// Adapter AOP
-        adapterMiddleware: <AdapterMiddleware<dynamic>>[
-          safetyAdapter<dynamic>()
-        ],
+        adapterMiddleware: <AdapterMiddleware<dynamic>>[safetyAdapter<dynamic>()],
 
         /// Effect AOP
         effectMiddleware: <EffectMiddleware<dynamic>>[

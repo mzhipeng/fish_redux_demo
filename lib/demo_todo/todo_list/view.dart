@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
 import 'action.dart';
+import 'adapter/adapter.dart';
 import 'state.dart';
 
 Widget buildView(TodoListState state, Dispatch dispatch, ViewService viewService) {

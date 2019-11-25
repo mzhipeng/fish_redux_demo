@@ -5,14 +5,27 @@ import 'action.dart';
 import 'state.dart';
 
 Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
-  return Container(
-    color: Colors.white,
-    child: Center(
-      child: RaisedButton(
-        child: Text('登录'),
-        onPressed: () {
-          dispatch(LoginActionCreator.onPushHomeAction());
-        },
+  return Scaffold(
+    body: Container(
+      color: Colors.white,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              child: Text('登录'),
+              onPressed: () {
+                dispatch(LoginActionCreator.onPushHomeAction());
+              },
+            ),
+            RaisedButton(
+              child: Text('TODO'),
+              onPressed: () {
+                dispatch(LoginActionCreator.onPushTodoAction());
+              },
+            ),
+          ],
+        ),
       ),
     ),
   );

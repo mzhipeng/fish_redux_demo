@@ -4,21 +4,30 @@ import 'package:flutter/material.dart';
 import 'action.dart';
 import 'state.dart';
 
-Widget buildView(ItemTodoComponentState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(ItemTodoState state, Dispatch dispatch, ViewService viewService) {
   return Container(
     padding: EdgeInsets.all(8),
+    height: 200,
     child: Card(
       child: Column(
         children: <Widget>[
-          Text(''),
-          Expanded(child: Text('')),
+          Text(state.title),
+          Expanded(child: Text(state.content)),
           Container(
             decoration:
                 BoxDecoration(border: Border(top: BorderSide(color: Colors.grey, width: 1))),
             child: Row(
               children: <Widget>[
+                Expanded(
+                  child: Text(state.id),
+                ),
                 GestureDetector(
-                  child: Icon(Icons.check_box_outline_blank),
+                  child: Icon(Icons.edit),
+                  onTap: () {},
+                ),
+                GestureDetector(
+                  child:
+                      (state.isDone ? Icon(Icons.check_box) : Icon(Icons.check_box_outline_blank)),
                   onTap: () {},
                 )
               ],

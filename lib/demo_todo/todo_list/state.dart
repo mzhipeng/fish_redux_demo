@@ -1,28 +1,31 @@
 import 'package:fish_redux/fish_redux.dart';
 
+import 'component/item_todo/component.dart';
+import 'component/item_todo/state.dart';
+
 class TodoListState extends MutableSource implements Cloneable<TodoListState> {
+  List<ItemTodoState> items;
 
   @override
   TodoListState clone() {
-    return TodoListState();
+    return TodoListState()..items = items;
   }
 
   @override
-  Object getItemData(int index) {
-    return null;
+  ItemTodoState getItemData(int index) {
+    return items[index];
   }
 
   @override
   String getItemType(int index) {
-    return null;
+    return ItemTodoComponent.KEY;
   }
 
   @override
-  int get itemCount => null;
+  int get itemCount => items?.length ?? 0;
 
   @override
-  void setItemData(int index, Object data) {
-  }
+  void setItemData(int index, Object data) => items[index] = data;
 }
 
 TodoListState initState(Map<String, dynamic> args) {

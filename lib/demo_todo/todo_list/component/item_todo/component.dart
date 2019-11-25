@@ -5,10 +5,10 @@ import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
 
-class ItemTodoComponentComponent extends Component<ItemTodoComponentState> {
-  static const String KEY = 'ItemTodoComponentComponent';
+class ItemTodoComponent extends Component<ItemTodoState> {
+  static const String KEY = 'ItemTodoComponent';
 
-  ItemTodoComponentComponent()
+  ItemTodoComponent()
       : super(
           effect: buildEffect(),
           reducer: buildReducer(),

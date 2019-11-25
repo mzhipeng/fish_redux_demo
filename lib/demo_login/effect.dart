@@ -1,3 +1,4 @@
+import 'package:fish_redux_demo/demo_todo/todo_list/page.dart';
 import 'package:flutter/material.dart' hide Action;
 
 import 'package:fish_redux/fish_redux.dart';
@@ -11,6 +12,7 @@ Effect<LoginState> buildEffect() {
     LoginAction.onLogin: _onLoginAction,
     LoginAction.onRegister: _onRegisterAction,
     LoginAction.onPushHome: _onPushHomeAction,
+    LoginAction.onPushTodo: _onPushTodoAction,
   });
 }
 
@@ -31,4 +33,8 @@ void _onRegisterAction(Action action, Context<LoginState> ctx) {
 /// 跳转首页
 void _onPushHomeAction(Action action, Context<LoginState> ctx) {
   Navigator.of(ctx.context).pushNamed('$HomePage', arguments: {'phone': '123'});
+}
+
+void _onPushTodoAction(Action action, Context<LoginState> ctx) {
+  Navigator.of(ctx.context).pushNamed(TodoListPage.KEY, arguments: {'phone': '123'});
 }

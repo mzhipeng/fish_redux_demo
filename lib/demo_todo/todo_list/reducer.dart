@@ -7,8 +7,14 @@ Reducer<TodoListState> buildReducer() {
   return asReducer(
     <Object, Reducer<TodoListState>>{
       TodoListAction.action: _onAction,
+      TodoListAction.initItems: _initItems,
     },
   );
+}
+
+TodoListState _initItems(TodoListState state, Action action) {
+  var clone = state.clone()..items = action.payload ?? [];
+  return clone;
 }
 
 TodoListState _onAction(TodoListState state, Action action) {

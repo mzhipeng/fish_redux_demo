@@ -1,12 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 
-enum ItemTodoComponentAction {
+enum ItemTodoAction {
   action,
 
 }
 
-class ItemTodoComponentActionCreator {
+class ItemTodoActionCreator {
   static Action onAction() {
-    return const Action(ItemTodoComponentAction.action);
+    return const Action(ItemTodoAction.action);
   }
 }

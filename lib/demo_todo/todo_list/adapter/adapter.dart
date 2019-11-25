@@ -7,11 +7,11 @@ import 'package:fish_redux_demo/demo_todo/todo_list/component/item_todo/componen
 import '../state.dart';
 import 'reducer.dart';
 
-class TodoListAdapterAdapter extends SourceFlowAdapter<TodoListState> {
-  TodoListAdapterAdapter()
+class TodoListAdapter extends SourceFlowAdapter<TodoListState> {
+  TodoListAdapter()
       : super(
           pool: <String, Component<Object>>{
-            ItemTodoComponentComponent.KEY: ItemTodoComponentComponent(),
+            ItemTodoComponent.KEY: ItemTodoComponent(),
           },
           reducer: buildReducer(),
         );

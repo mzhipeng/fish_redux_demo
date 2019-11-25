@@ -1,13 +1,25 @@
 import 'package:fish_redux/fish_redux.dart';
 
-class ItemTodoComponentState implements Cloneable<ItemTodoComponentState> {
+class ItemTodoState implements Cloneable<ItemTodoState> {
+  String id;
+  String title;
+  String content;
+  bool isDone;
+
+  ItemTodoState({this.id, this.title, this.content, this.isDone}) {
+    id ??= DateTime.now().toIso8601String();
+  }
 
   @override
-  ItemTodoComponentState clone() {
-    return ItemTodoComponentState();
+  ItemTodoState clone() {
+    return ItemTodoState()
+      ..id = id
+      ..title = title
+      ..content = content
+      ..isDone = isDone;
   }
 }
 
-ItemTodoComponentState initState(Map<String, dynamic> args) {
-  return ItemTodoComponentState();
+ItemTodoState initState(Map<String, dynamic> args) {
+  return ItemTodoState();
 }

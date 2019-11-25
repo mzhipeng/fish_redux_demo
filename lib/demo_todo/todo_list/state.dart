@@ -2,8 +2,6 @@ import 'package:fish_redux/fish_redux.dart';
 
 class TodoListState extends MutableSource implements Cloneable<TodoListState> {
 
-
-
   @override
   TodoListState clone() {
     return TodoListState();

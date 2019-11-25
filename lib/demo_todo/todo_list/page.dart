@@ -1,5 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 
+import 'adapter/adapter.dart';
+
+///
 import 'effect.dart';
 import 'reducer.dart';
 import 'state.dart';
@@ -12,7 +15,9 @@ class TodoListPage extends Page<TodoListState, Map<String, dynamic>> {
           effect: buildEffect(),
           reducer: buildReducer(),
           view: buildView,
-          dependencies: Dependencies<TodoListState>(adapter: null, slots: <String, Dependent<TodoListState>>{}),
-          middleware: <Middleware<TodoListState>>[],
+          dependencies: Dependencies<TodoListState>(
+              adapter: NoneConn<TodoListState>() + TodoListAdapterAdapter(),
+              slots: <String, Dependent<TodoListState>>{}),
+//          middleware: <Middleware<TodoListState>>[],
         );
 }

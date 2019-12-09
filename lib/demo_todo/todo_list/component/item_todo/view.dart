@@ -12,7 +12,7 @@ Widget buildView(ItemTodoState state, Dispatch dispatch, ViewService viewService
       child: Column(
         children: <Widget>[
           Text(state.title),
-          Expanded(child: Text(state.content)),
+          Expanded(child: Center(child: Text(state.content, textAlign: TextAlign.center,))),
           Container(
             decoration:
                 BoxDecoration(border: Border(top: BorderSide(color: Colors.grey, width: 1))),

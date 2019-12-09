@@ -11,7 +11,7 @@ class TodoListAdapter extends SourceFlowAdapter<TodoListState> {
   TodoListAdapter()
       : super(
           pool: <String, Component<Object>>{
-            ItemTodoComponent.KEY: ItemTodoComponent(),
+            '$ItemTodoComponent': ItemTodoComponent(),
           },
           reducer: buildReducer(),
         );

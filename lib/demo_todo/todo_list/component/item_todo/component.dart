@@ -6,7 +6,6 @@ import 'state.dart';
 import 'view.dart';
 
 class ItemTodoComponent extends Component<ItemTodoState> {
-  static const String KEY = 'ItemTodoComponent';
 
   ItemTodoComponent()
       : super(

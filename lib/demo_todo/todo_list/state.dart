@@ -18,7 +18,7 @@ class TodoListState extends MutableSource implements Cloneable<TodoListState> {
 
   @override
   String getItemType(int index) {
-    return ItemTodoComponent.KEY;
+    return '$ItemTodoComponent';
   }
 
   @override

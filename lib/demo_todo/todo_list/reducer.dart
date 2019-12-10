@@ -6,7 +6,7 @@ import 'state.dart';
 Reducer<TodoListState> buildReducer() {
   return asReducer(
     <Object, Reducer<TodoListState>>{
-      TodoListAction.action: _onAction,
+//      TodoListAction.action: _onAction,
       TodoListAction.initItems: _initItems,
     },
   );

@@ -6,12 +6,26 @@ import 'state.dart';
 Reducer<ItemTodoState> buildReducer() {
   return asReducer(
     <Object, Reducer<ItemTodoState>>{
-      ItemTodoAction.action: _onAction,
+      ItemTodoAction.done: _makeDone,
+      ItemTodoAction.edit: _editCompleted,
     },
   );
 }
 
-ItemTodoState _onAction(ItemTodoState state, Action action) {
-  final ItemTodoState newState = state.clone();
-  return newState;
+ItemTodoState _makeDone(ItemTodoState state, Action action) {
+  String id = action.payload;
+  if (state.id == id) {
+    return state.clone()..isDone = !state.isDone;
+  }
+  return state;
+}
+
+ItemTodoState _editCompleted(ItemTodoState state, Action action) {
+  final ItemTodoState todo = action.payload;
+  if (state.id == todo.id) {
+    return state.clone()
+      ..title = todo.title
+      ..content = todo.content;
+  }
+  return state;
 }

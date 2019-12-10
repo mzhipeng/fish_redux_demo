@@ -2,11 +2,10 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
 import 'action.dart';
-import 'adapter/adapter.dart';
+import 'component/item_todo/state.dart';
 import 'state.dart';
 
-Widget buildView(
-    TodoListState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(TodoListState state, Dispatch dispatch, ViewService viewService) {
   var adapter = viewService.buildAdapter();
   return Scaffold(
     appBar: AppBar(
@@ -28,12 +27,12 @@ Widget buildView(
                   )),
                   Expanded(
                       child: Text(
-                    '已完成待办: ',
+                    '已完成待办: ${state.items.where((ItemTodoState it) => it.isDone).length}',
                     textAlign: TextAlign.center,
                   )),
                   Expanded(
                       child: Text(
-                    '未完成待办: ',
+                    '未完成待办: ${state.items.where((ItemTodoState it) => !it.isDone).length}',
                     textAlign: TextAlign.center,
                   )),
                 ],
@@ -50,7 +49,9 @@ Widget buildView(
       ),
     ),
     floatingActionButton: FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        dispatch(TodoListActionCreator.onAddAction());
+      },
       child: Icon(Icons.add),
     ),
   );

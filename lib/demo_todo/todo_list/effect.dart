@@ -1,5 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:fish_redux_demo/demo_todo/todo_edit/page.dart';
+import 'package:flutter/material.dart' hide Action;
 import 'action.dart';
+import 'adapter/action.dart';
 import 'state.dart';
 
 /// component
@@ -8,7 +11,7 @@ import 'component/item_todo/state.dart';
 Effect<TodoListState> buildEffect() {
   return combineEffects(<Object, Effect<TodoListState>>{
     Lifecycle.initState: _init,
-    TodoListAction.action: _onAction,
+    TodoListAction.onAdd: _onAdd,
   });
 }
 
@@ -36,4 +39,10 @@ void _init(Action action, Context<TodoListState> ctx) {
   ctx.dispatch(TodoListActionCreator.initItemsAction(items));
 }
 
-void _onAction(Action action, Context<TodoListState> ctx) {}
+void _onAdd(Action action, Context<TodoListState> ctx) {
+  Navigator.pushNamed(ctx.context, '$TodoEditPage').then((todo) {
+    if (todo != null) {
+      ctx.dispatch(TodoListAdapterActionCreator.addAction(todo));
+    }
+  });
+}

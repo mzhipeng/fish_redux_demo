@@ -6,7 +6,7 @@ class ItemTodoState implements Cloneable<ItemTodoState> {
   String content;
   bool isDone;
 
-  ItemTodoState({this.id, this.title, this.content, this.isDone}) {
+  ItemTodoState({this.id, this.title, this.content, this.isDone = false}) {
     id ??= DateTime.now().toIso8601String();
   }
 
@@ -18,8 +18,4 @@ class ItemTodoState implements Cloneable<ItemTodoState> {
       ..content = content
       ..isDone = isDone;
   }
-}
-
-ItemTodoState initState(Map<String, dynamic> args) {
-  return ItemTodoState();
 }

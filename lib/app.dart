@@ -1,10 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 
+import 'demo_todo/todo_edit/page.dart';
 import 'demo_todo/todo_list/page.dart';
 import 'global_store/state.dart';
 import 'global_store/store.dart';
-import 'todo_edit_page/page.dart';
 import 'todo_list_page/page.dart';
 
 /// login
@@ -24,9 +24,10 @@ Widget createApp() {
       'todo_list': ToDoListPage(),
 
       /// 注册Todo编辑页面
-      'todo_edit': TodoEditPage(),
+//      'todo_edit': TodoEditPage(),
       '$LoginPage': LoginPage(),
       '$HomePage': HomePage(),
+      '$TodoEditPage': TodoEditPage(),
       TodoListPage.KEY: TodoListPage(),
     },
     visitor: (String path, Page<Object, dynamic> page) {

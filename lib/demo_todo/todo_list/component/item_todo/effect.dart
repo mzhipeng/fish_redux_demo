@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:fish_redux_demo/common/utils/dialog_utils.dart';
 import 'package:fish_redux_demo/demo_todo/todo_edit/page.dart';
 import 'package:fish_redux_demo/demo_todo/todo_list/adapter/action.dart';
 import 'package:flutter/material.dart' hide Action;
@@ -23,7 +24,35 @@ void _onEdit(Action action, Context<ItemTodoState> ctx) {
 }
 
 void _onRemove(Action action, Context<ItemTodoState> ctx) async {
-  await Future.delayed(Duration(seconds: 3)).then((_) {
-    ctx.dispatch(TodoListAdapterActionCreator.removeAction(action.payload));
+  await showDialog<bool>(
+      context: ctx.context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('提示'),
+          content: Text('是否删除${ctx.state.title}'),
+          actions: <Widget>[
+            InkWell(
+              child: Text('取消'),
+              onTap: () {
+                Navigator.pop(ctx.context, false);
+              },
+            ),
+            InkWell(
+              child: Text('删除'),
+              onTap: () {
+                Navigator.pop(ctx.context, true);
+              },
+            ),
+          ],
+        );
+      }).then((isRemove) {
+    if (isRemove) {
+      DialogUtils.showProgress(ctx.context, 'loading...');
+      // 模拟网络删除
+      Future.delayed(Duration(seconds: 3)).then((_) {
+        DialogUtils.dismissProgress();
+        ctx.dispatch(TodoListAdapterActionCreator.removeAction(action.payload));
+      });
+    }
   });
 }
